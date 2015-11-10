@@ -10,6 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -20,8 +21,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
+    compile ('com.facebook.android:facebook-android-sdk:4.7.0'){
+        exclude module: 'bolts-android'
+        exclude module: 'support-v4'
+    }
+    compile files('libs/bolts-android-1.2.1.jar')
+    compile files('libs/Parse-1.10.3.jar')
+    compile files('libs/ParseFacebookUtilsV4-1.10.3.jar')
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+
 }
